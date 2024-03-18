@@ -1,0 +1,921 @@
+{
+	"info": {
+		"_postman_id": "e27025ef-aaa2-48af-b7a3-02e3100e29be",
+		"name": "STSTStudentCourse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33427869"
+	},
+	"item": [
+		{
+			"name": "Get All Todo Entries",
+			"item": [
+				{
+					"name": "Get All Todo Entries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData.links[0].href)\r",
+									"console.log(jsonData.links[5].rel)\r",
+									"console.log(jsonData.title)\r",
+									"console.log(jsonData.apiVersion)\r",
+									"\r",
+									"pm.environment.set(\"href\", jsonData.links[0].href);\r",
+									"pm.environment.set(\"rel\", jsonData.links[5].rel);\r",
+									"pm.environment.set(\"title\", jsonData.title);\r",
+									"pm.environment.set(\"apiVersion\", jsonData.apiVersion);\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code should be 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code name should have OK string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"console.log(jsonData)\r",
+									"console.log(jsonData.apiVersion)\r",
+									"console.log(jsonData.title)\r",
+									"console.log(jsonData.paymentCurrency)\r",
+									"console.log(jsonData.categories[2])\r",
+									"console.log(jsonData.categories[0])\r",
+									"console.log(jsonData.categories[4])\r",
+									"\r",
+									"\r",
+									"pm.test(\"Confirm that the API version is 7.2.5.0\", function () {\r",
+									"    pm.expect(jsonData.apiVersion).to.eql(\"7.2.5.0\");\r",
+									"});\r",
+									"pm.test(\"Confirm that the title is Fusio\", function () {\r",
+									"    pm.expect(jsonData.title).to.eql(\"Fusio\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that paymentCurrency is EUR\", function () {\r",
+									"    pm.expect(jsonData.paymentCurrency).to.eql(\"EUR\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that category [2] is consumer\", function () {\r",
+									"    pm.expect(jsonData.categories[2]).to.eql(\"consumer\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that category [0] is authorization\", function () {\r",
+									"    pm.expect(jsonData.categories[0]).to.eql(\"authorization\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that category [4] is default\", function () {\r",
+									"    pm.expect(jsonData.categories[4]).to.eql(\"default\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that the first href is https://demo.fusio-project.org/\", function () {\r",
+									"    pm.expect(jsonData.links[0].href).to.eql(\"https://demo.fusio-project.org/\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that scopes is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"scopes\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that links is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"links\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// pm.test(\"Body is correct\", function () {\r",
+									"//     pm.response.to.have.body(\"response_body_string\");\r",
+									"// });\r",
+									"\r",
+									"// pm.test(\"Body matches string\", function () {\r",
+									"//     pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
+									"// });\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get All Entries",
+			"item": [
+				{
+					"name": "Get All Entries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Confirm that apiVersion is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"apiVersion\");\r",
+									"});\r",
+									"pm.test(\"Confirm that title is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"title\");\r",
+									"});\r",
+									"pm.test(\"Confirm that paymentCurrency is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"paymentCurrency\");\r",
+									"});\r",
+									"pm.test(\"Confirm that categories is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"categories\");\r",
+									"});\r",
+									"pm.test(\"Confirm that scopes is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"scopes\");\r",
+									"});\r",
+									"pm.test(\"Confirm that links is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"links\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "https://demo.fusio-project.org/index.php/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get entry per ID",
+			"item": [
+				{
+					"name": "Get entry per ID - Valid ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that paymentCurrency is EUR\", function () {\r",
+									"    pm.expect(jsonData.paymentCurrency).to.eql(\"EUR\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that category [2] is consumer\", function () {\r",
+									"    pm.expect(jsonData.categories[2]).to.eql(\"consumer\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that category [0] is authorization\", function () {\r",
+									"    pm.expect(jsonData.categories[0]).to.eql(\"authorization\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that category [4] is default\", function () {\r",
+									"    pm.expect(jsonData.categories[4]).to.eql(\"default\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that the first href is https://demo.fusio-project.org/\", function () {\r",
+									"    pm.expect(jsonData.links[0].href).to.eql(\"https://demo.fusio-project.org/\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that scopes is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"scopes\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that links is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"links\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}?todo_id={{title}}&todo_id={{apiVersion}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"query": [
+								{
+									"key": "todo_id",
+									"value": "{{title}}"
+								},
+								{
+									"key": "todo_id",
+									"value": "{{apiVersion}}"
+								}
+							]
+						},
+						"description": "https://demo.fusio-project.org/index.php/todo/:todo_id"
+					},
+					"response": []
+				},
+				{
+					"name": "Get entry per ID - Invalid ID(params not using TODO ID)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that paymentCurrency is EUR\", function () {\r",
+									"    pm.expect(jsonData.paymentCurrency).to.eql(\"EUR\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that category [2] is consumer\", function () {\r",
+									"    pm.expect(jsonData.categories[2]).to.eql(\"consumer\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that category [0] is authorization\", function () {\r",
+									"    pm.expect(jsonData.categories[0]).to.eql(\"authorization\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that category [4] is default\", function () {\r",
+									"    pm.expect(jsonData.categories[4]).to.eql(\"default\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that the first href is https://demo.fusio-project.org/\", function () {\r",
+									"    pm.expect(jsonData.links[0].href).to.eql(\"https://demo.fusio-project.org/\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that scopes is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"scopes\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}?todo_id=38444",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"query": [
+								{
+									"key": "todo_id",
+									"value": "38444"
+								}
+							]
+						},
+						"description": "https://demo.fusio-project.org/index.php/todo/:todo_id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Books",
+			"item": [
+				{
+					"name": "Get All Books",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"console.log(response[0].name)\r",
+									"console.log(response[0].type)\r",
+									"console.log(response[1].id)\r",
+									"\r",
+									"\r",
+									"pm.test(\"Locate a book named The Russian\", function () {\r",
+									"    pm.expect(response[0].name).to.eql(\"The Russian\");\r",
+									"});\r",
+									"pm.test(\"Confirm that book type is fiction\", function () {\r",
+									"    pm.expect(response[0].type).to.eql(\"fiction\");\r",
+									"});\r",
+									"pm.test(\"Confirm that ID 1 is 2\", function () {\r",
+									"    pm.expect(response[1].id).to.eql(2);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "540bd43cf706368d43ecbfd49df5a059c92c9f3306de459bf39c3a29b96ebfe5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlBooks}}/books",
+							"host": [
+								"{{baseUrlBooks}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Books by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"console.log(response[3].id)\r",
+									"pm.environment.set(\"BookID\", response[3].id);\r",
+									"\r",
+									"pm.test(\"Confirm that Book name is The Russian\", function () {\r",
+									"    pm.expect(response[0].name).to.eql(\"The Russian\");\r",
+									"});\r",
+									"pm.test(\"Confirm that Book type is fiction\", function () {\r",
+									"    pm.expect(response[0].type).to.eql(\"fiction\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlBooks}}/books",
+							"host": [
+								"{{baseUrlBooks}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Books by Type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Confirm that status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"pm.test(\"Locate a book named The Vanishing Half\", function () {\r",
+									"    pm.expect(response[1].name).to.eql(\"The Vanishing Half\");\r",
+									"});\r",
+									"pm.test(\"Confirm that book type is fiction\", function () {\r",
+									"    pm.expect(response[0].type).to.eql(\"fiction\");\r",
+									"});\r",
+									"pm.test(\"Confirm that Book is available\", function () {\r",
+									"    pm.expect(response[0].available).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlBooks}}/books?type=fiction",
+							"host": [
+								"{{baseUrlBooks}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "fiction"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Place a book order",
+			"item": [
+				{
+					"name": "Place a book order - using book ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const OrderID = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Confirm that order created is true\", function () {\r",
+									"    pm.expect(OrderID.created).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that orderID is available\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"orderId\");\r",
+									"});\r",
+									"\r",
+									"console.log(OrderID.orderId);\r",
+									"pm.environment.set(\"OrderID\", OrderID.orderId);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9883e3e2c12e960d96d03cece1caa5f4d8ae9da8189ddcfb7ebeadb540e609cd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookId\": {{BookID}},\n    \"customerName\": \"Sochy\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlBooks}}/orders",
+							"host": [
+								"{{baseUrlBooks}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register an API client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Confirm that status code is 409 Conflict\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"clientName\": \"Sochy\",\r\n   \"clientEmail\": \"chinasasochima@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlBooks}}/api-clients/",
+							"host": [
+								"{{baseUrlBooks}}"
+							],
+							"path": [
+								"api-clients",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get an order",
+			"item": [
+				{
+					"name": "Get all orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Confirm that customer name is Sochy\", function () { \r",
+									"    pm.expect(jsonData[0].customerName).to.eql(\"Sochy\");\r",
+									"});\r",
+									"pm.test(\"Confirm that timestamp figures\", function () { \r",
+									"    pm.expect(jsonData[0].timestamp).to.eql(1710377350499);\r",
+									"});\r",
+									"pm.test(\"Confirm that quantity is 1\", function () { \r",
+									"    pm.expect(jsonData[0].quantity).to.eql(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9883e3e2c12e960d96d03cece1caa5f4d8ae9da8189ddcfb7ebeadb540e609cd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlBooks}}/orders",
+							"host": [
+								"{{baseUrlBooks}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get an order - using orderID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that customer name is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"customerName\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that quantity is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"quantity\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Confirm that timestamp is present\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"quantity\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9883e3e2c12e960d96d03cece1caa5f4d8ae9da8189ddcfb7ebeadb540e609cd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlBooks}}/orders/:orderId",
+							"host": [
+								"{{baseUrlBooks}}"
+							],
+							"path": [
+								"orders",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "{{OrderID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update an order",
+			"item": [
+				{
+					"name": "Update an order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Confirm that status code is 401 Unathorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "540bd43cf706368d43ecbfd49df5a059c92c9f3306de459bf39c3a29b96ebfe5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookId\": 1,\n    \"customerName\": \"Testify Academy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlBooks}}/orders/",
+							"host": [
+								"{{baseUrlBooks}}"
+							],
+							"path": [
+								"orders",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete an order",
+			"item": [
+				{
+					"name": "Delete an order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Confirm that status code is 204 No Content\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9883e3e2c12e960d96d03cece1caa5f4d8ae9da8189ddcfb7ebeadb540e609cd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrlBooks}}/orders/:orderId",
+							"host": [
+								"{{baseUrlBooks}}"
+							],
+							"path": [
+								"orders",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "{{OrderID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get API Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code name should have OK string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/status",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
